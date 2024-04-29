@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/client-side-templates.js"></script>
+    <script src="https://unpkg.com/mustache@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Cat in space</title>
+  </head>
+ 
+  <body>
+    
+    <div hx-ext="client-side-templates">
+      <div hx-get="/data/data_daily_img.json"
+              hx-trigger='load'
+              hx-swap="#daily_img"
+              mustache-template="daily_image_template">
+      </div>
+
+      <div hx-get="/data/data_people_in_space.json"
+      hx-trigger='load'
+      hx-swap="#people_in_space"
+      mustache-template="people_in_space_template">
+      </div>
+
+      <template id="daily_image_template">
+
+        <nav class="bg-gray-100">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+              <div class="relative flex h-16 items-center justify-between">
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                  <div class="flex flex-shrink-0 items-center mr-2">
+                    <svg class="svg-icon h-8 w-auto" viewBox="0 0 20 20">
+                      <path d="M10,6.536c-2.263,0-4.099,1.836-4.099,4.098S7.737,14.732,10,14.732s4.099-1.836,4.099-4.098S12.263,6.536,10,6.536M10,13.871c-1.784,0-3.235-1.453-3.235-3.237S8.216,7.399,10,7.399c1.784,0,3.235,1.452,3.235,3.235S11.784,13.871,10,13.871M17.118,5.672l-3.237,0.014L12.52,3.697c-0.082-0.105-0.209-0.168-0.343-0.168H7.824c-0.134,0-0.261,0.062-0.343,0.168L6.12,5.686H2.882c-0.951,0-1.726,0.748-1.726,1.699v7.362c0,0.951,0.774,1.725,1.726,1.725h14.236c0.951,0,1.726-0.773,1.726-1.725V7.195C18.844,6.244,18.069,5.672,17.118,5.672 M17.98,14.746c0,0.477-0.386,0.861-0.862,0.861H2.882c-0.477,0-0.863-0.385-0.863-0.861V7.384c0-0.477,0.386-0.85,0.863-0.85l3.451,0.014c0.134,0,0.261-0.062,0.343-0.168l1.361-1.989h3.926l1.361,1.989c0.082,0.105,0.209,0.168,0.343,0.168l3.451-0.014c0.477,0,0.862,0.184,0.862,0.661V14.746z">
+                      </path>
+                    </svg>
+                  </div>
+
+                  <figure id="daily_img" class="flex space-x-4">
+                    <p class="text-gray-800 px-3 py-2 text-sm font-medium">autor: {{copyright}}
+                      <span class="text-gray-500 px-3 py-2 text-sm font-medium">
+                        {{title}} ({{date}})
+                      </span>
+                    </p>
+                  </figure>
+                </div>
+              </div>
+            </div>
+        </nav>
+
+        <section class="h-screen max-w-full bg-cover bg-[url('{{url}}')] ">
+
+          <article id="people_in_space" class="flex items-center justify-center min-h-screen shadow-inner">
+            <div class="rounded text-3xl w-96">
+              <img src="./img/cat _in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
+              <p class="text-center text-gray-100">more cats to space</p>
+              
+            </div>
+            
+            
+          </article>
+          
+        </section>
+        
+      </template>
+      
+      <template id="people_in_space_template">
+        {{ #people }}
+        <p class="bg-gray-100">{{ name }} - {{ craft }}</p>
+        {{ /people }}
+      </template>
+
+
+  </div>
+
+
+    <section class="bg-white">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">more cats to space</h2>
+        
+          <p class="mt-4 text-gray-500">Matylda chce taky do vesmíru.</p>
+    
+          <dl class="mt-16 grid">
+            <div class="border-t border-gray-200 pt-4">
+              <dt class="font-medium text-gray-900">Počet koček na oběžné dráze země</dt>
+              <dd class="mt-2 text-sm text-gray-500">0</dd>
+            </div>
+
+
+
+          </dl>
+        </div>
+        <div class="grid grid-cols grid-rows">
+          <img src="./img/cat _in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
+          
+        </div>
+      </div>
+    </section>
+    
+    <template id="people_in_space_template">
+    </template>
+
+   
+  </body>
+</html>
