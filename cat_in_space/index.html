@@ -14,20 +14,22 @@
   <body>
     
     <div hx-ext="client-side-templates">
-      <div hx-get="/data/data_daily_img.json"
-              hx-trigger='load'
-              hx-swap="#daily_img"
-              mustache-template="daily_image_template">
+
+      <div
+        hx-get="/data/data_daily_img.json"
+        hx-trigger='load'
+        hx-swap="#daily_img"
+        mustache-template="daily_image_template">
       </div>
 
-      <div hx-get="/data/data_people_in_space.json"
-      hx-trigger='load'
-      hx-swap="#people_in_space"
-      mustache-template="people_in_space_template">
+      <div
+        hx-get="/data/data_people_in_space.json"
+        hx-trigger='load'
+        hx-swap="#people_in_space"
+        mustache-template="people_in_space_template">
       </div>
 
       <template id="daily_image_template">
-
         <nav class="bg-gray-100">
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div class="relative flex h-16 items-center justify-between">
@@ -39,7 +41,7 @@
                     </svg>
                   </div>
 
-                  <figure id="daily_img" class="flex space-x-4">
+                  <figure id="daily_img" class="flex space-x-4 font-mono">
                     <p class="text-gray-800 px-3 py-2 text-sm font-medium">autor: {{copyright}}
                       <span class="text-gray-500 px-3 py-2 text-sm font-medium">
                         {{title}} ({{date}})
@@ -52,57 +54,47 @@
         </nav>
 
         <section class="h-screen max-w-full bg-cover bg-[url('{{url}}')] ">
-
           <article id="people_in_space" class="flex items-center justify-center min-h-screen shadow-inner">
             <div class="rounded text-3xl w-96">
-              <img src="./img/cat _in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
-              <p class="text-center text-gray-100">more cats to space</p>
-              
+              <img src="./img/cat_in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
+              <p class="text-center text-gray-100 font-mono">more cats to space</p>
             </div>
-            
-            
           </article>
-          
         </section>
-        
       </template>
       
       <template id="people_in_space_template">
-        {{ #people }}
-        <p class="bg-gray-100">{{ name }} - {{ craft }}</p>
-        {{ /people }}
+        <section class="max-w-full bg-sky-900 items-center py-8 font-mono">
+          <div class="grid items-center justify-center">
+            <p class="text-4xl">Lidé ve vesmíru</p>
+              {{ #people }}
+                <p>{{ name }} - {{ craft }}</p>
+              {{ /people }}
+          </div>
+        </section>
       </template>
+      
 
+    </div>
 
-  </div>
-
-
-    <section class="bg-white">
-      <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-        <div>
-          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">more cats to space</h2>
-        
-          <p class="mt-4 text-gray-500">Matylda chce taky do vesmíru.</p>
-    
-          <dl class="mt-16 grid">
-            <div class="border-t border-gray-200 pt-4">
-              <dt class="font-medium text-gray-900">Počet koček na oběžné dráze země</dt>
-              <dd class="mt-2 text-sm text-gray-500">0</dd>
-            </div>
-
-
-
-          </dl>
-        </div>
-        <div class="grid grid-cols grid-rows">
-          <img src="./img/cat _in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
-          
+    <section class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8 font-mono">
+      <div class="w-auto">
+        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl">more cats to space</h2>
+        <p class="mt-4 text-gray-500">Matylda chce taky do vesmíru.</p>
+        <div class="border-t border-gray-200 pt-4">
+          <dt class="font-medium text-gray-900">Počet koček na oběžné dráze země</dt>
+          <dd class="mt-2 text-sm text-gray-500">0</dd>
         </div>
       </div>
+      <div class="w-auto">
+        <img src="./img/cat_in_space_suit.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
+      </div>
+     
     </section>
+
+
     
-    <template id="people_in_space_template">
-    </template>
+
 
    
   </body>
